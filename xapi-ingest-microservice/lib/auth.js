@@ -35,9 +35,9 @@ var DB = require('./db');
  * @param  {Function}       callback                    Standard callback function
  * @param  {Object}         callback.err                An error that occurred, if any
  */
-var verifyWriteAuth = module.exports.verifyWriteAuth = function(req, callback) {
-  // AWS Lambda doesn't support basic authentication. Extract the basic authentication credentials from event headers
+var verifyWriteAuth = module.exports.verifyWriteAuth = function(req, event, callback) {
 
+  // AWS Lambda doesn't support basic authentication. Extract the basic authentication credentials from event headers.
   var credentials = {
     name = event.headers.username,
     pass = event.headers.password
@@ -116,9 +116,9 @@ var getWriteCredential = function(key, secret, callback) {
  * @param  {Function}       callback                    Standard callback function
  * @param  {Object}         callback.err                An error that occurred, if any
  */
-var verifyReadAuth = module.exports.verifyReadAuth = function(req, callback) {
-  // Basic AUth is not supported in the lamba-services. Extract the basic authentication credentials from event headers.
+var verifyReadAuth = module.exports.verifyReadAuth = function(req, event, callback) {
 
+  // AWS Lambda doesn't support basic authentication. Extract the basic authentication credentials from event headers.
   var credentials = {
     name = event.headers.username,
     pass = event.headers.password

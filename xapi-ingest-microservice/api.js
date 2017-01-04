@@ -219,7 +219,7 @@ var getOrCreateUser = function(ctx, statement, callback) {
     console.log({'statement': statement}, 'Unable to extract user from statement');
     return callback({'code': 500, 'msg': 'Unable to extract user from statement'});
   }
-  // TODO : Remove the hardcoded values if any with authentication service context once it is implemented
+
   // Get the user from the DB or create it if it doesn't exist yet
   options = {
     'where': {
