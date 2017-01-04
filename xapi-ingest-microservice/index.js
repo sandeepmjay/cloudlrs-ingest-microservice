@@ -42,7 +42,7 @@ exports.handler = function(event, context, callback) {
   require('./globals/sequelize.js');
   console.log('Starting DB init function');
   DB.init(function() {
-    AuthAPI.verifyWriteAuth(context, function(err) {
+    AuthAPI.verifyWriteAuth(context, event, function(err) {
       if (err) {
         context.fail(err.code + ' : ' + err.msg);
       }else{
