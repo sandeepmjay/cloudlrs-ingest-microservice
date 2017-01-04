@@ -1,0 +1,12 @@
+{
+  "db": {
+    "database": "database-name",
+    "username": "username",
+    "password": "password",
+    "host": "aws RDS host",
+    "port": 5432,
+    "dropOnStartup": false,
+    "version": "9.3.14",
+    "sync": true
+  }
+}
