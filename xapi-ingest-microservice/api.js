@@ -128,7 +128,7 @@ var saveStatement = module.exports.saveStatement = function(ctx, statement, call
           // doesn't exist yet, it will be created
           getOrCreateUser(ctx, statement, function(err, user) {
             if (err) {
-              console.log({'err': err}, 'An error occured while getting the learning activity statement actor');
+              console.log({'err': err}, 'An error occurred while getting the learning activity statement actor');
               return callback(err);
             }
 
@@ -151,7 +151,7 @@ var saveStatement = module.exports.saveStatement = function(ctx, statement, call
                 return callback({'code': 500, 'msg': err.message});
               }
 
-              console.log({'statement': statement}, 'Sucessfully stored learning activity statement');
+              console.log({'statement': statement}, 'Successfully stored learning activity statement');
               return callback();
             });
           });

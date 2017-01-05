@@ -39,8 +39,8 @@ var verifyWriteAuth = module.exports.verifyWriteAuth = function(req, event, call
 
   // AWS Lambda doesn't support basic authentication. Extract the basic authentication credentials from event headers.
   var credentials = {
-    name = event.headers.username,
-    pass = event.headers.password
+    'name' : event.headers.username,
+    'pass' : event.headers.password
   };
 
   // Validate that credentials are present
@@ -120,8 +120,8 @@ var verifyReadAuth = module.exports.verifyReadAuth = function(req, event, callba
 
   // AWS Lambda doesn't support basic authentication. Extract the basic authentication credentials from event headers.
   var credentials = {
-    name = event.headers.username,
-    pass = event.headers.password
+    'name' : event.headers.username,
+    'pass' : event.headers.password
   };
 
   // Validate that credentials are present
