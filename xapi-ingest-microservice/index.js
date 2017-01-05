@@ -50,7 +50,7 @@ exports.handler = function(event, context, callback) {
         console.log('Event :' + JSON.stringify(event));
         console.log('Context' + JSON.stringify(context));
         // Process the statement
-        StatementAPI.saveStatement(context.ctx, event, function(err) {
+        StatementAPI.saveStatement(context.ctx, event.body, function(err) {
           if (err) {
             context.fail(err.code + ' : '+ err.msg);
           }
