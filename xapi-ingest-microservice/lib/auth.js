@@ -1,5 +1,5 @@
 /**
- * Copyright ©2016. The Regents of the University of California (Regents). All Rights Reserved.
+ * Copyright ©2017. The Regents of the University of California (Regents). All Rights Reserved.
  *
  * Permission to use, copy, modify, and distribute this software and its documentation
  * for educational, research, and not-for-profit purposes, without fee and without a
@@ -36,7 +36,6 @@ var DB = require('./db');
  * @param  {Object}         callback.err                An error that occurred, if any
  */
 var verifyWriteAuth = module.exports.verifyWriteAuth = function(req, event, callback) {
-
   // AWS Lambda doesn't support basic authentication. Extract the basic authentication credentials from event headers.
   var credentials = {
     'name' : event.headers.username,
