@@ -1,5 +1,5 @@
 /**
- * Copyright ©2016. The Regents of the University of California (Regents). All Rights Reserved.
+ * Copyright ©2017. The Regents of the University of California (Regents). All Rights Reserved.
  *
  * Permission to use, copy, modify, and distribute this software and its documentation
  * for educational, research, and not-for-profit purposes, without fee and without a
@@ -28,7 +28,7 @@ var joi = require('joi');
 var uuid = require('uuid');
 var xapiValidator = require('xapi-validator');
 
-var DB = require('./lib/db');
+var DB = require('./db');
 
 /**
  * Get a learning activity statement by its uuid
@@ -150,9 +150,8 @@ var saveStatement = module.exports.saveStatement = function(ctx, statement, call
                 console.log({'err': err}, 'Failed to store a new learning activity statement');
                 return callback({'code': 500, 'msg': err.message});
               }
-
               console.log({'statement': statement}, 'Successfully stored learning activity statement');
-              return callback();
+              return callback(null, statement);
             });
           });
         });
