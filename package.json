@@ -1,6 +1,6 @@
 {
-  "name": "xapi-ingest-microservice",
-  "description": "XAPI ingestion service for the cloud-based Learning Record Store",
+  "name": "lrs-ingest-microservice",
+  "description": "LRS ingestion microservice for the cloud-based Learning Record Store to process XAPI and Caliper events",
   "version": "0.1.0",
   "repository": {
     "type": "git",
@@ -26,11 +26,11 @@
     "lodash": "latest",
     "moment": "latest",
     "pg": "latest",
-    "pg-hstore" : "latest",
-    "sequelize" : "latest",
+    "pg-hstore": "latest",
+    "sequelize": "latest",
     "tincanjs": "latest",
     "uuid": "latest",
-    "xapi-validator": "https://github.com/nicolaasmatthijs/xapi-validator",
+    "xapi-validator": "https://github.com/ets-berkeley-edu/xapi-validator.git",
     "yargs": "latest"
   },
   "engines": {
