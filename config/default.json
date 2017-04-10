@@ -6,7 +6,7 @@
     "host": "aws rds host",
     "port": 5432,
     "dropOnStartup": false,
-    "version": "9.3.14",
+    "version": "9.4.9",
     "sync": true
   },
   "uuidVersion": "4",
