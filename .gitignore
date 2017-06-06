@@ -4,4 +4,6 @@
 config/*
 !config/default.json
 
+.serverless/*
+
 node_modules/*
