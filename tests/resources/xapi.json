@@ -1,0 +1,28 @@
+{ "id":"6d6d9f6b-6fc4-4a64-a96f-c598ca9c6a92",
+  "timestamp":"2014-03-07T00:17:16.000Z",
+  "actor":{
+    "objectType":"Agent",
+    "name":"John Doe",
+    "account":{
+      "homePage":"http://berkeley.edu/directory",
+      "name":"UID:1234"
+    }
+  },
+  "verb":{
+    "id":"https://brindlewaye.com/xAPITerms/verbs/loggedin",
+    "display":{
+      "en-US":"logged in"
+    }
+  },
+  "object":{
+    "objectType":"Activity",
+    "definition":{
+      "extensions":{}
+    },
+    "id":"https://bcourses.berkeley.edu"
+  },
+  "context":{
+    "platform":"bCourses",
+    "contextActivities":{}
+  }
+}

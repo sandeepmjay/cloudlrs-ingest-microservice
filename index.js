@@ -168,7 +168,7 @@ exports.handler = function(event, context, callback) {
 
 var getStatementType = function(context, statement, callback) {
   var statementType = '';
-  if (statement.hasOwnProperty('uuid') && statement.hasOwnProperty('@context') && statement.hasOwnProperty('eventTime') && statement.hasOwnProperty('actor') && statement.hasOwnProperty('object')) {
+  if (statement.hasOwnProperty('id') && statement.hasOwnProperty('@context') && statement.hasOwnProperty('eventTime') && statement.hasOwnProperty('actor') && statement.hasOwnProperty('object')) {
     statementType = 'CALIPER';
     console.log("Incoming statement is of type CALIPER");
   } else if (statement.hasOwnProperty('id') && statement.hasOwnProperty('actor') && statement.hasOwnProperty('verb') && statement.hasOwnProperty('object') && statement.hasOwnProperty('timestamp')) {

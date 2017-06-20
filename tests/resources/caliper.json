@@ -1,0 +1,66 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "uuid": "9f8bf228-6e6b-43eb-8dc3-ae96b0b9dae7",
+  "type": "NavigationEvent",
+  "actor": {
+    "id": "http://caliper.canvaslms.com/live-events/users/10720000001133399",
+    "type": "Person",
+    "extensions": [
+      {
+        "user_login": "1133399",
+        "root_account_id": "school-1",
+        "root_account_lti_guid": "794d72b707af6ea82cfe3d5d473f16888a8366c7.canvas.kr"
+      }
+    ]
+  },
+  "action": "NavigatedTo",
+  "object": {
+    "id": "http://caliper.canvaslms.com/live-events/assets/discussion_topic/asset-id-1",
+    "type": "Entity",
+    "extensions": [
+      {
+        "asset_type": "discussion_topic"
+      }
+    ]
+  },
+  "eventTime": "2016-10-10T18:33:41.000Z",
+  "edApp": {
+    "id": "http://caliper.canvaslms.com/live-events",
+    "type": "SoftwareApplication"
+  },
+  "group": {
+    "id": "http://caliper.canvaslms.com/live-events/courses/course-1",
+    "type": "CourseOffering",
+    "extensions": [
+      {
+        "context_type": "Course"
+      }
+    ]
+  },
+  "membership": {
+    "id": "http://caliper.canvaslms.com/live-events/courses/course-1/Instructor/teacher-1",
+    "type": "Membership",
+    "member": {
+      "id": "http://caliper.canvaslms.com/live-events/users/teacher-1",
+      "type": "Person"
+    },
+    "organization": {
+      "id": "http://caliper.canvaslms.com/live-events/courses/course-1",
+      "type": "CourseOffering"
+    },
+    "roles": [
+      "Instructor"
+    ]
+  },
+  "session": {
+    "id": "http://caliper.canvaslms.com/live-events/sessions/e36bb834c5a4ec2a24c88762719336cf",
+    "type": "Session"
+  },
+  "extensions": [
+    {
+      "hostname": "canvas.docker",
+      "request_id": "f72863c5-d541-40b3-8183-e9e3e877e3bc",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36"
+    }
+  ]
+}
