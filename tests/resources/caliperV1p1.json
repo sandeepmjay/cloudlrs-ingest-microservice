@@ -1,0 +1,73 @@
+{
+    "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+    "id": "urn:uuid:9efb9198-ada1-483b-aecf-eaff54ac372d",
+    "type": "NavigationEvent",
+    "actor": {
+        "id": "urn:instructure:canvas:user:10720000005418585",
+        "type": "Person",
+        "extensions": [
+            {
+                "user_login": "1133399",
+                "root_account_id": "10720000000090242",
+                "root_account_lti_guid": "000acc84f0c185947403946f09656fee7c0e18f7.ucberkeley.instructure.com",
+                "entity_id": "10720000005418585"
+            }
+        ]
+    },
+    "action": "NavigatedTo",
+    "object": {
+        "id": "urn:instructure:canvas:context_external_tool:10720000000058920",
+        "type": "Entity",
+        "name": "context_external_tool",
+        "extensions": [
+            {
+                "asset_type": "context_external_tool",
+                "entity_id": "10720000000058920"
+            }
+        ]
+    },
+    "eventTime": "2017-06-19T22:29:06.000Z",
+    "edApp": {
+        "id": "http://ucberkeley.beta.instructure.com/",
+        "type": "SoftwareApplication"
+    },
+    "group": {
+        "id": "urn:instructure:canvas:course:10720000001462196",
+        "type": "CourseOffering",
+        "extensions": [
+            {
+                "context_type": "Course",
+                "entity_id": "10720000001462196"
+            }
+        ]
+    },
+    "membership": {
+        "id": "urn:instructure:canvas:course:10720000001462196:Learner:10720000005418585",
+        "type": "Membership",
+        "member": {
+            "id": "urn:instructure:canvas:user:10720000005418585",
+            "type": "Person"
+        },
+        "organization": {
+            "id": "urn:instructure:canvas:course:10720000001462196",
+            "type": "CourseOffering"
+        },
+        "roles": [
+            "Learner"
+        ]
+    },
+    "session": {
+        "id": "urn:instructure:canvas:session:49085babf702ce7b451755417546909b",
+        "type": "Session"
+    },
+    "extensions": [
+        {
+            "hostname": "ucberkeley.beta.instructure.com",
+            "request_id": "eb33be85-05d5-4560-a0f0-eb686ef8733c",
+            "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+        },
+        {
+            "version": "1.0.0"
+        }
+    ]
+}
