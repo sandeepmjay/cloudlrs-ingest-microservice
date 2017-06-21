@@ -97,7 +97,8 @@ exports.handler = function(event, context, callback) {
           response.code = 400;
           response.msg = 'Statement not in xAPI or Caliper format';
           context.callbackWaitsForEmptyEventLoop = false;
-          return callback(JSON.stringify(response));
+          // return callback(JSON.stringify(response));
+          return callback(response);
         }
 
         // Process and save XAPI and Caliper statements accordingly

@@ -1,7 +1,7 @@
 {
   "name": "lrs-ingest-microservice",
   "description": "LRS ingestion microservice for the cloud-based Learning Record Store to process XAPI and Caliper events",
-  "version": "1.0",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/ets-berkeley-edu/cloudlrs-lambda-services.git"

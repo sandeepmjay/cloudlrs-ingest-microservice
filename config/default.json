@@ -1,6 +1,6 @@
 {
   "db": {
-    "database": "lrs database name",
+    "database": "database",
     "username": "username",
     "password": "password",
     "host": "aws rds host",
@@ -11,7 +11,7 @@
   },
   "uuidVersion": "4",
   "writeCredential": {
-    "username": "username",
-    "password": "password"
+    "username": "xyz",
+    "password": "abc"
   }
 }
