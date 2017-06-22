@@ -13,14 +13,23 @@ const wrapped = lambdaWrapper.wrap(mod, { handler: 'handler' });
 
 describe('ingest', () => {
   before((done) => {
-//  lambdaWrapper.init(liveFunction); // Run the deployed lambda
-
+  // lambdaWrapper.init(liveFunction); // Run the deployed lambda
+  // TODO: Bootstrap test DB configurations
+  // Populate seed data for write creadentials
     done();
   });
 
-  it('implement tests here', () => {
-    return wrapped.run({}).then((response) => {
-      expect(response).to.not.be.empty;
+  it('implement tests here', (done) => {
+    var event = { key1: 1 , key2: 2 };
+    wrapped.run(event, (err, response) => {
+      console.log(err);
+      expect(response).to.be.empty;
+      expect(err).to.be.not.empty;
+      expect(err).to.be.an('object');
+      expect(err.result).to.equal('Failed');
+      expect(err.code).to.equal(400);
+      expect(err.msg).to.deep.equal('Statement not in xAPI or Caliper format');
     });
+    done();
   });
 });

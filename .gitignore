@@ -2,6 +2,7 @@
 *.log
 
 config/*
+! config/default.json
 
 .serverless/*
 

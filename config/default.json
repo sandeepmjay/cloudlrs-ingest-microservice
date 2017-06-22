@@ -1,17 +1,18 @@
 {
   "db": {
-    "database": "database",
+    "database": "lrs database name",
     "username": "username",
     "password": "password",
     "host": "aws rds host",
     "port": 5432,
     "dropOnStartup": false,
     "version": "9.4.9",
-    "sync": true
+    "sync": true,
+    "ssl": true
   },
   "uuidVersion": "4",
   "writeCredential": {
-    "username": "xyz",
-    "password": "abc"
+    "username": "username",
+    "password": "password"
   }
 }
