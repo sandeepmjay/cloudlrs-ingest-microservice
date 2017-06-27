@@ -1,0 +1,18 @@
+{
+  "db": {
+    "database": "cloudlrstest",
+    "username": "cloudlrstest",
+    "password": "cloudlrstest",
+    "host": "localhost",
+    "port": 5432,
+    "dropOnStartup": true,
+    "version": "9.4.9",
+    "sync": true,
+    "ssl": false
+  },
+  "uuidVersion": "4",
+  "writeCredential": {
+    "username": "cloudlrstest",
+    "password": "cloudlrstest"
+  }
+}

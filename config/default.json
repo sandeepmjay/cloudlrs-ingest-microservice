@@ -5,13 +5,25 @@
     "password": "password",
     "host": "aws rds host",
     "port": 5432,
-    "dropOnStartup": false,
     "version": "9.4.9",
-    "sync": true
+    "dropOnStartup": false,
+    "sync": true,
+    "ssl": true
+  },
+  "cookie": {
+    "secret": "String to encrypt the cookies with. Change me in production"
   },
   "uuidVersion": "4",
   "writeCredential": {
     "username": "username",
     "password": "password"
+  },
+  "log": {
+    "level": "info",
+    "stream": "stdout"
+  },
+  "app": {
+    "https": false,
+    "port": 2000
   }
 }

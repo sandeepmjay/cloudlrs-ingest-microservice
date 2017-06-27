@@ -112,9 +112,10 @@ exports.handler = function(event, context, callback) {
                 response.msg = err.msg || 'Error during save: \n' + JSON.stringify(err);
                 context.callbackWaitsForEmptyEventLoop = false;
                 return callback(JSON.stringify(response));
+
               } else {
-                console.log('201 : XAPI Statement processing successful with uuid: ' + statement.uuid);
-                response.msg = 'XAPI Statement processing successful with uuid: ' + statement.uuid;
+                console.log('201 : XAPI statement processing successful with uuid: ' + statement.uuid);
+                response.msg = 'XAPI statement processing successful with uuid: ' + statement.uuid;
                 response.result = 'Success';
                 response.code = 201;
                 context.callbackWaitsForEmptyEventLoop = false;
@@ -132,6 +133,7 @@ exports.handler = function(event, context, callback) {
                 response.msg = err.msg || 'Error during save: \n' + JSON.stringify(err);
                 context.callbackWaitsForEmptyEventLoop = false;
                 return callback(JSON.stringify(response));
+
               } else {
                 var result = '201 : Caliper statement processing successful with uuid: ' + statement.uuid;
                 console.log(result);
