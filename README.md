@@ -63,7 +63,7 @@ Note: Install serverless only if using an already deployed function
 ## Configure Lambda deployment options in serverless.yml
 
 Specify Lambda function config options as outline in the serverless.yml file.
-Refer [Configuration Options](https://serverless.com/framework/docs/providers/aws/guide/services/) documentation. 
+Refer [Configuration Options](https://serverless.com/framework/docs/providers/aws/guide/services/) documentation.
 
 ## Deploy to AWS
 
@@ -81,14 +81,14 @@ serverless deploy function -f ingest
 ### Running local test using serverless emulator. Test data can be served using path and data options
 
 ```
-serverless invoke local --function ingest --path tests/caliper.json
+serverless invoke local --function ingest --path test/data/caliperV1p1.json
 serverless invoke local --function ingest --data { 1: 'hello', 2: 'world' }
 ```
 
 ### Deployed function can be invoked by using
 
 ```
-serverless invoke --function ingest --path tests/caliper.json
+serverless invoke --function ingest --path test/data/caliperV1p1.json
 serverless invoke --function ingest --data { 1: 'hello', 2: 'world' }
 ```
 

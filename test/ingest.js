@@ -1,3 +1,28 @@
+/**
+ * Copyright ©2017. The Regents of the University of California (Regents). All Rights Reserved.
+ *
+ * Permission to use, copy, modify, and distribute this software and its documentation
+ * for educational, research, and not-for-profit purposes, without fee and without a
+ * signed licensing agreement, is hereby granted, provided that the above copyright
+ * notice, this paragraph and the following two paragraphs appear in all copies,
+ * modifications, and distributions.
+ *
+ * Contact The Office of Technology Licensing, UC Berkeley, 2150 Shattuck Avenue,
+ * Suite 510, Berkeley, CA 94720-1620, (510) 643-7201, otl@berkeley.edu,
+ * http://ipira.berkeley.edu/industry-info for commercial licensing opportunities.
+ *
+ * IN NO EVENT SHALL REGENTS BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT, SPECIAL,
+ * INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING OUT OF
+ * THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF REGENTS HAS BEEN ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * REGENTS SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
+ * SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED HEREUNDER IS PROVIDED
+ * "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
+ * ENHANCEMENTS, OR MODIFICATIONS.
+ */
+
 'use strict';
 
 // tests for ingest
@@ -11,25 +36,128 @@ const expect = mochaPlugin.chai.expect;
 const should = mochaPlugin.chai.should();
 const wrapped = lambdaWrapper.wrap(mod, { handler: 'handler' });
 
-describe('ingest', () => {
-  before((done) => {
-  // lambdaWrapper.init(liveFunction); // Run the deployed lambda
+var CloudLRS = require('cloud-lrs/index.js');
+var shared = require('./shared');
+
+const testDataPath = './test/data/'
+
+describe('LRS ingest microservice tests', function() {
   // TODO: Bootstrap test DB configurations
-  // Populate seed data for write creadentials
-    done();
+  // Populate seed data for write credential
+
+  var server;
+  // Initializes Cloud LRS server & DB with test configurations. The microservice syncs to the Test DB to run through the mocha tests
+  before(function(done) {
+    shared.setupRunningServer(function() {
+      server = CloudLRS.appServer;
+      return done();
+    });
+  });
+  after(function(done) {
+    shared.teardownRunningServer(done);
   });
 
-  it('implement tests here', (done) => {
-    var event = { key1: 1 , key2: 2 };
-    wrapped.run(event, (err, response) => {
-      console.log(err);
-      expect(response).to.be.empty;
-      expect(err).to.be.not.empty;
-      expect(err).to.be.an('object');
-      expect(err.result).to.equal('Failed');
-      expect(err.code).to.equal(400);
-      expect(err.msg).to.deep.equal('Statement not in xAPI or Caliper format');
+  // Generic LRS ingest tests
+  describe('Generic ingest tests', function () {
+    it('should not accept random input which is not in xAPI or Caliper format', function(done) {
+      var event = { key1: 1 , key2: 2 };
+      wrapped.run(event, function(err, response) {
+        var error = JSON.parse(err);
+        expect(response).to.be.empty;
+        expect(error).to.be.not.empty;
+        expect(error).to.be.an('object');
+        expect(error.result).to.equal('Failed');
+        expect(error.code).to.equal(400);
+        expect(error.msg).to.deep.equal('Statement not in xAPI or Caliper format');
+      });
+      done();
     });
-    done();
+
+    it('should not accept if request is not a well formed JSON', function(done) {
+      var event = "{ key1: 1 , key2: 2";
+      wrapped.run(event, function(err, response) {
+        var error = JSON.parse(err);
+        expect(response).to.be.empty;
+        expect(error).to.be.not.empty;
+        expect(error).to.be.an('object');
+        expect(error.result).to.equal('Failed');
+        expect(error.code).to.equal(400);
+        expect(error.msg).to.deep.equal('Request not a well formed JSON');
+      });
+      done();
+    });
+
+  });
+
+  // Caliper specific test cases
+  describe('Caliper ingest tests', function () {
+    it('should accept valid caliper statement', function(done) {
+      var path = testDataPath + 'caliperV1p1.json';
+      shared.readFile(path, function(err, event){
+        wrapped.run(event, function(err, response) {
+          expect(response).to.be.not.empty;
+          expect(err).to.be.a('null');
+          expect(response).to.be.an('object');
+          expect(response.result).to.equal('Success');
+          expect(response.code).to.equal(201);
+          expect(response.msg).to.have.a.string('Caliper statement processing successful with uuid:');
+        });
+      });
+      done();
+    });
+
+    // Test Attempts to write an existing statement. The test is set to run with a delay so that the previous test can insert the statement.
+    it('should not accept existing caliper statement', function(done) {
+      var path = testDataPath + 'caliperV1p1.json';
+      setTimeout(function () {
+        shared.readFile(path, function(err, event) {
+          wrapped.run(event, function(err, response) {
+            var error = JSON.parse(err);
+            expect(error).to.be.not.empty;
+            expect(error.result).to.equal('Failed');
+            expect(error.code).to.equal(400);
+            expect(error.msg).to.have.a.string('Attempted to save a learning activity statement that already exists');
+          });
+        });
+      }, 1000);
+      done();
+    });
+
+  });
+
+  // XAPI specific test cases
+  describe('XAPI ingest tests', function () {
+    it('should accept valid xapi statement', function(done) {
+      var path = testDataPath + 'xapi.json';
+      shared.readFile(path, function(err, event){
+        wrapped.run(event, function(err, response) {
+          expect(response).to.be.not.empty;
+          expect(err).to.be.a('null');
+          expect(response).to.be.an('object');
+          expect(response.result).to.equal('Success');
+          expect(response.code).to.equal(201);
+          expect(response.msg).to.have.a.string('XAPI statement processing successful with uuid:');
+        });
+      });
+      done();
+    });
+
+    // Test Attempts to write an existing statement. The test is set to run with a delay so that the previous test can insert the statement.
+    it('should not accept existing xapi statement', function(done) {
+      var path = testDataPath + 'xapi.json';
+      setTimeout(function () {
+        shared.readFile(path, function(err, event) {
+          wrapped.run(event, function(err, response) {
+            var error = JSON.parse(err);
+            expect(error).to.be.not.empty;
+            expect(error.result).to.equal('Failed');
+            expect(error.code).to.equal(400);
+            expect(error.msg).to.have.a.string('Attempted to save a learning activity statement that already exists');
+          });
+        });
+      }, 1000);
+      done();
+    });
+
   });
 });
