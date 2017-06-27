@@ -99,3 +99,43 @@ serverless remove
 ```
 
 Refer [Serverless Quick Start Guide](https://serverless.com/framework/docs/providers/aws/guide/quick-start/) for more details
+
+# Running Tests for cloudlrs-ingest-microservice
+
+The microservice uses serverless mocha plugin(includes mocha, chai, lambda wrapper) to create a test suite. We first bootstrap cloud-lrs
+DB with test environment configuration and populate it seed data. Lambda then syncs with the DB to run end-to-end tests.
+
+## Working with serverless mocha plugin
+
+Note - These configs are already created. This is for informational purposes only. Skip to [Run Mocha Tests](## Run Mocha Tests)
+```
+npm install --save-dev serverless-mocha-plugin
+```
+Add the plugin in the serverless.yml
+```
+plugins:
+  - serverless-mocha-plugin
+```
+Create the test function if it doesn't exist using
+```
+sls create test -f functionName
+```
+
+## Run Mocha Tests
+
+create test database and user
+```
+createuser cloudlrstest --pwprompt   # The default config assumes the password "cloudlrstest"
+createdb cloudlrstest --owner=cloudlrstest
+```
+
+Run tests using the following command
+```
+sls invoke test [--stage stage] [--region region] [-f function1] [-f function2] [...]
+sls invoke tests --NODE_ENV='test'
+```
+
+The command is also configured in package.json to run via npm.
+```
+npm run test
+```
