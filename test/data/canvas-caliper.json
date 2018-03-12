@@ -1,0 +1,47 @@
+{
+  "@context": "http://purl.imsglobal.org/ctx/caliper/v1p1",
+  "id": "urn:uuid:930ca3c8-308f-4ae4-9157-1701ddaf3cae",
+  "type": "NavigationEvent",
+  "actor": {
+    "id": "urn:instructure:canvas:user:10720000003323889",
+    "type": "Person",
+    "extensions": {
+      "com.instructure.canvas": {
+        "real_user_id": "10720000004866442",
+        "root_account_id": "10720000000090242",
+        "root_account_lti_guid": "000acc84f0c185947403946f09656fee7c0e18f7.ucberkeley.instructure.com",
+        "entity_id": "10720000003323889"
+      }
+    }
+  },
+  "action": "NavigatedTo",
+  "object": {
+    "id": "urn:instructure:canvas:course:10720000001471110",
+    "type": "Entity",
+    "name": "home",
+    "extensions": {
+      "com.instructure.canvas": {
+        "asset_type": "course",
+        "asset_subtype": "home",
+        "entity_id": "10720000001471110"
+      }
+    }
+  },
+  "eventTime": "2018-02-14T23:13:30.000Z",
+  "edApp": {
+    "id": "http://ucberkeley.beta.instructure.com/",
+    "type": "SoftwareApplication"
+  },
+  "session": {
+    "id": "urn:instructure:canvas:session:63389a52b47d53b818381e4c7dcaca00",
+    "type": "Session"
+  },
+  "extensions": {
+    "com.instructure.canvas": {
+      "hostname": "ucberkeley.beta.instructure.com",
+      "request_id": "d096a963-5107-4eae-ab64-c14ae38afcc2",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36",
+      "version": "1.0.0"
+    }
+  }
+}

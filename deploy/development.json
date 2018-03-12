@@ -1,11 +1,11 @@
 {
   "db": {
-    "database": "lrs database name",
-    "username": "username",
-    "password": "password",
-    "host": "aws rds host",
+    "database": "cloudlrs_raytest",
+    "username": "pdgadmin",
+    "password": "pdgbears",
+    "host": "cloud-lrs.ckczc4bt6rg7.us-west-2.rds.amazonaws.com",
     "port": 5432,
-    "version": "9.6.2",
+    "version": "9.4.9",
     "dropOnStartup": false,
     "sync": true,
     "ssl": true
@@ -15,8 +15,8 @@
   },
   "uuidVersion": "4",
   "writeCredential": {
-    "username": "username",
-    "password": "password"
+    "username": "cloudlrs",
+    "password": "cloudlrs"
   },
   "log": {
     "level": "info",

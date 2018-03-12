@@ -31,6 +31,8 @@
     "pg": "6.1.5",
     "pg-hstore": "2.3.2",
     "randomstring": "1.1.5",
+    "serverless": "latest",
+    "serverless-mocha-plugin": "latest",
     "sequelize": "3.30.4",
     "tincanjs": "0.50.0",
     "uuid": "3.0.1",
@@ -41,7 +43,7 @@
     "node": "6.10"
   },
   "devDependencies": {
-    "serverless-mocha-plugin": "^1.3.5"
+    "serverless-mocha-plugin": "^1.7.0"
   },
   "scripts": {
     "test": "sls invoke test --NODE_ENV='test'"
