@@ -76,7 +76,7 @@ exports.handler = function(event, context, callback) {
   // Sync data model
   DB.init(function() {
     // Verify write credentials
-    AuthAPI.verifyWriteAuth(context, function(err) {
+    AuthAPI.verifyAuth(context, function(err) {
       if (err) {
         console.log('Authentication failed. \n' + JSON.stringify(err));
         response.result = 'Failed';

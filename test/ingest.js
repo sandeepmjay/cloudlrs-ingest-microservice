@@ -92,7 +92,7 @@ describe('LRS ingest microservice tests', function() {
   // Caliper specific test cases
   describe('Caliper ingest tests', function () {
     it('should accept valid caliper statement', function(done) {
-      var path = testDataPath + 'caliperV1p1.json';
+      var path = testDataPath + 'canvas-caliper.json';
       shared.readFile(path, function(err, event){
         wrapped.run(event, function(err, response) {
           expect(response).to.be.not.empty;
@@ -108,7 +108,7 @@ describe('LRS ingest microservice tests', function() {
 
     // Test Attempts to write an existing statement. The test is set to run with a delay so that the previous test can insert the statement.
     it('should not accept existing caliper statement', function(done) {
-      var path = testDataPath + 'caliperV1p1.json';
+      var path = testDataPath + 'canvas-caliper.json';
       setTimeout(function () {
         shared.readFile(path, function(err, event) {
           wrapped.run(event, function(err, response) {
@@ -131,7 +131,7 @@ describe('LRS ingest microservice tests', function() {
       var path = testDataPath + 'xapi.json';
       shared.readFile(path, function(err, event){
         wrapped.run(event, function(err, response) {
-          expect(response).to.be.not.empty;
+          // expect(response).to.be.not.empty;
           expect(err).to.be.a('null');
           expect(response).to.be.an('object');
           expect(response.result).to.equal('Success');
