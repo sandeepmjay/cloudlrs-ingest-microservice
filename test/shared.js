@@ -1,5 +1,5 @@
 /**
- * Copyright ©2017. The Regents of the University of California (Regents). All Rights Reserved.
+ * Copyright ©2018. The Regents of the University of California (Regents). All Rights Reserved.
  *
  * Permission to use, copy, modify, and distribute this software and its documentation
  * for educational, research, and not-for-profit purposes, without fee and without a
@@ -36,8 +36,8 @@ var DB = require('cloud-lrs/lib/lrs-core/db.js');
  */
 var seedDataSet = exports.seedDataSet = function(db, callback) {
   var externalUserID = randomstring.generate({charset: 'numeric', length: 8});
-  var sourceCredentialKey = 'cloudlrstest'; // randomstring.generate({length: 8}) + '-source';
-  var sourceCredentialSecret = 'cloudlrstest'; // randomstring.generate({length: 8});
+  var sourceCredentialKey = 'cloudlrstest';
+  var sourceCredentialSecret = 'cloudlrstest';
   var consumerCredentialKey = randomstring.generate({length: 8}) + '-consumer';
   var consumerCredentialSecret = randomstring.generate({length: 8});
   db.Tenant.create({
@@ -134,7 +134,9 @@ var teardownRunningServer = exports.teardownRunningServer = function(callback) {
  */
 var readFile = exports.readFile = function(path, callback) {
   jf.readFile(path, function(err, content) {
-    if (err) throw err;
+    if (err) {
+      throw err;
+    }
     return callback(null, content);
   });
 };

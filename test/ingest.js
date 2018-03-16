@@ -1,5 +1,5 @@
 /**
- * Copyright ©2017. The Regents of the University of California (Regents). All Rights Reserved.
+ * Copyright ©2018. The Regents of the University of California (Regents). All Rights Reserved.
  *
  * Permission to use, copy, modify, and distribute this software and its documentation
  * for educational, research, and not-for-profit purposes, without fee and without a
@@ -19,7 +19,7 @@
  * REGENTS SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
  * SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED HEREUNDER IS PROVIDED
- * "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
+ * 'AS IS'. REGENTS HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
  * ENHANCEMENTS, OR MODIFICATIONS.
  */
 
@@ -34,12 +34,12 @@ const mochaPlugin = require('serverless-mocha-plugin');
 const lambdaWrapper = mochaPlugin.lambdaWrapper;
 const expect = mochaPlugin.chai.expect;
 const should = mochaPlugin.chai.should();
-const wrapped = lambdaWrapper.wrap(mod, { handler: 'handler' });
+const wrapped = lambdaWrapper.wrap(mod, {handler: 'handler'});
 
 var CloudLRS = require('cloud-lrs/index.js');
 var shared = require('./shared');
 
-const testDataPath = './test/data/'
+const testDataPath = './test/data/';
 
 describe('LRS ingest microservice tests', function() {
   // TODO: Bootstrap test DB configurations
@@ -58,9 +58,9 @@ describe('LRS ingest microservice tests', function() {
   });
 
   // Generic LRS ingest tests
-  describe('Generic ingest tests', function () {
+  describe('Generic ingest tests', function() {
     it('should not accept random input which is not in xAPI or Caliper format', function(done) {
-      var event = { key1: 1 , key2: 2 };
+      var event = {key1: 1, key2: 2};
       wrapped.run(event, function(err, response) {
         var error = JSON.parse(err);
         expect(response).to.be.empty;
@@ -74,7 +74,7 @@ describe('LRS ingest microservice tests', function() {
     });
 
     it('should not accept if request is not a well formed JSON', function(done) {
-      var event = "{ key1: 1 , key2: 2";
+      var event = '{ key1: 1 , key2: 2';
       wrapped.run(event, function(err, response) {
         var error = JSON.parse(err);
         expect(response).to.be.empty;
@@ -90,10 +90,10 @@ describe('LRS ingest microservice tests', function() {
   });
 
   // Caliper specific test cases
-  describe('Caliper ingest tests', function () {
+  describe('Caliper ingest tests', function() {
     it('should accept valid caliper statement', function(done) {
       var path = testDataPath + 'canvas-caliper.json';
-      shared.readFile(path, function(err, event){
+      shared.readFile(path, function(err, event) {
         wrapped.run(event, function(err, response) {
           expect(response).to.be.not.empty;
           expect(err).to.be.a('null');
@@ -109,7 +109,7 @@ describe('LRS ingest microservice tests', function() {
     // Test Attempts to write an existing statement. The test is set to run with a delay so that the previous test can insert the statement.
     it('should not accept existing caliper statement', function(done) {
       var path = testDataPath + 'canvas-caliper.json';
-      setTimeout(function () {
+      setTimeout(function() {
         shared.readFile(path, function(err, event) {
           wrapped.run(event, function(err, response) {
             var error = JSON.parse(err);
@@ -126,10 +126,10 @@ describe('LRS ingest microservice tests', function() {
   });
 
   // XAPI specific test cases
-  describe('XAPI ingest tests', function () {
+  describe('XAPI ingest tests', function() {
     it('should accept valid xapi statement', function(done) {
       var path = testDataPath + 'xapi.json';
-      shared.readFile(path, function(err, event){
+      shared.readFile(path, function(err, event) {
         wrapped.run(event, function(err, response) {
           // expect(response).to.be.not.empty;
           expect(err).to.be.a('null');
@@ -145,7 +145,7 @@ describe('LRS ingest microservice tests', function() {
     // Test Attempts to write an existing statement. The test is set to run with a delay so that the previous test can insert the statement.
     it('should not accept existing xapi statement', function(done) {
       var path = testDataPath + 'xapi.json';
-      setTimeout(function () {
+      setTimeout(function() {
         shared.readFile(path, function(err, event) {
           wrapped.run(event, function(err, response) {
             var error = JSON.parse(err);

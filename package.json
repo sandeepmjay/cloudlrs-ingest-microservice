@@ -24,6 +24,8 @@
     "event-stream": "3.3.4",
     "express": "4.15.2",
     "forever": "0.15.3",
+    "gulp": "3.9.1",
+    "gulp-eslint": "4.0.0",
     "joi": "10.4.1",
     "lodash": "4.17.4",
     "mocha": "latest",
@@ -31,8 +33,8 @@
     "pg": "6.1.5",
     "pg-hstore": "2.3.2",
     "randomstring": "1.1.5",
-    "serverless": "latest",
-    "serverless-mocha-plugin": "latest",
+    "serverless": "1.26.1",
+    "serverless-mocha-plugin": "^1.7.0",
     "sequelize": "3.30.4",
     "tincanjs": "0.50.0",
     "uuid": "3.0.1",
@@ -40,12 +42,10 @@
     "yargs": "7.0.2"
   },
   "engines": {
-    "node": "6.10"
-  },
-  "devDependencies": {
-    "serverless-mocha-plugin": "^1.7.0"
+    "node": "6.10.2"
   },
   "scripts": {
-    "test": "sls invoke test --NODE_ENV='test'"
+    "localtest": "sls invoke test --NODE_ENV='test'",
+    "test": "gulp eslint"
   }
 }
