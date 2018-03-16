@@ -5,8 +5,8 @@
     "password": "cloudlrstest",
     "host": "localhost",
     "port": 5432,
-    "dropOnStartup": true,
-    "version": "9.4.9",
+    "dropOnStartup": false,
+    "version": "9.6.2",
     "sync": true,
     "ssl": false
   },

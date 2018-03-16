@@ -17,7 +17,7 @@
     "aws-sdk": "2.40.0",
     "basic-auth": "1.1.0",
     "body-parser": "1.17.1",
-    "caliperjs": "git@github.com:sandeepmjay/caliper-js.git#develop",
+    "caliperjs": "IMSGlobal/caliper-js",
     "cloud-lrs": "ets-berkeley-edu/cloud-lrs",
     "config": "1.25.1",
     "dtrace-provider": "0.8.1",
