@@ -5,7 +5,7 @@
     "password": "password",
     "host": "aws rds host",
     "port": 5432,
-    "version": "9.4.9",
+    "version": "9.6.2",
     "dropOnStartup": false,
     "sync": true,
     "ssl": true

@@ -1,10 +1,11 @@
 .DS_STORE
 *.log
 
-config/*
+config/*.json
 !config/default.json
 !config/test.json
 
 .serverless/*
 
 node_modules/*
+package-lock.json

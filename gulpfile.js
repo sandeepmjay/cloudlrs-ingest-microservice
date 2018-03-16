@@ -1,5 +1,5 @@
 /**
- * Copyright ©2017. The Regents of the University of California (Regents). All Rights Reserved.
+ * Copyright ©2018. The Regents of the University of California (Regents). All Rights Reserved.
  *
  * Permission to use, copy, modify, and distribute this software and its documentation
  * for educational, research, and not-for-profit purposes, without fee and without a
@@ -23,28 +23,26 @@
  * ENHANCEMENTS, OR MODIFICATIONS.
  */
 
-var Constants = module.exports = {
-  'ADMIN_ROLES': [
-    'urn:lti:instrole:ims/lis/Administrator'
-  ],
-  'TEACHER_ROLES': [
-    'ContentDeveloper',
-    'Instructor',
-    'urn:lti:role:ims/lis/ContentDeveloper',
-    'urn:lti:role:ims/lis/Instructor',
-    'urn:lti:role:ims/lis/TeachingAssistant'
-  ],
-  'TEACHER_ENROLLMENTS': [
-    'Adv Designer',
-    'DesignerEnrollment',
-    'TaEnrollment',
-    'TeacherEnrollment'
-  ],
-  'ENROLLMENT_STATE': {
-    'ACTIVE': 'active',
-    'COMPLETED': 'completed',
-    'INACTIVE': 'inactive',
-    'INVITED': 'invited',
-    'REJECTED': 'rejected'
-  }
-};
+var gulp = require('gulp');
+var eslint = require('gulp-eslint');
+var runSequence = require('run-sequence');
+
+/**
+ * Lint javascript files
+ */
+gulp.task('eslint', function() {
+  return gulp
+    .src([
+      'gulpfile.js',
+      '*.js',
+      'lib/**/*.js',
+      'scripts/**/*.js',
+      'test/*.js'
+    ])
+    .pipe(eslint())
+    // Output results to console. Alternatively, use eslint.formatEach().
+    .pipe(eslint.format())
+    // To have the process exit with an error code (1) on
+    // lint error, return the stream and pipe to failAfterError last.
+    .pipe(eslint.failAfterError());
+});

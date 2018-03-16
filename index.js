@@ -1,5 +1,5 @@
 /**
- * Copyright ©2017. The Regents of the University of California (Regents). All Rights Reserved.
+ * Copyright ©2018. The Regents of the University of California (Regents). All Rights Reserved.
  *
  * Permission to use, copy, modify, and distribute this software and its documentation
  * for educational, research, and not-for-profit purposes, without fee and without a
@@ -19,7 +19,7 @@
  * REGENTS SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
  * SOFTWARE AND ACCOMPANYING DOCUMENTATION, IF ANY, PROVIDED HEREUNDER IS PROVIDED
- * "AS IS". REGENTS HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
+ * 'AS IS'. REGENTS HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
  * ENHANCEMENTS, OR MODIFICATIONS.
  */
 
@@ -43,20 +43,20 @@ exports.handler = function(event, context, callback) {
   require('./globals/sequelize.js');
   var request = null;
   var response = {
-    'logGroupName': context.logGroupName,
-    'logStreamName': context.logStreamName,
-    'functionName': context.functionName,
-    'invokeid': context.invokeid,
-    'result': '',
-    'code': null,
-    'msg': ''
-  }
+    logGroupName: context.logGroupName,
+    logStreamName: context.logStreamName,
+    functionName: context.functionName,
+    invokeid: context.invokeid,
+    result: '',
+    code: null,
+    msg: ''
+  };
 
   if (typeof event === 'string') {
     try {
       request = JSON.parse(event);
     } catch (err) {
-      console.log("Request is not a well formed JSON");
+      console.log('Request is not a well formed JSON');
       response.result = 'Failed';
       response.code = 400;
       response.msg = 'Request not a well formed JSON';
@@ -66,7 +66,7 @@ exports.handler = function(event, context, callback) {
   } else if (typeof event === 'object') {
     request = event;
   } else {
-    console.log("Request is not a well formed JSON object");
+    console.log('Request is not a well formed JSON object');
     response.result = 'Failed';
     response.code = 400;
     response.msg = 'Request not a well formed JSON';
@@ -76,7 +76,7 @@ exports.handler = function(event, context, callback) {
   // Sync data model
   DB.init(function() {
     // Verify write credentials
-    AuthAPI.verifyWriteAuth(context, function(err) {
+    AuthAPI.verifyAuth(context, function(err) {
       if (err) {
         console.log('Authentication failed. \n' + JSON.stringify(err));
         response.result = 'Failed';
@@ -92,7 +92,7 @@ exports.handler = function(event, context, callback) {
 
       getStatementType(context.ctx, request, function(err, statementType) {
         if (err) {
-          console.log("Unknown Statement type.\n" + JSON.stringify(err));
+          console.log('Unknown Statement type.\n' + JSON.stringify(err));
           response.result = 'Failed';
           response.code = 400;
           response.msg = 'Statement not in xAPI or Caliper format';
@@ -157,7 +157,7 @@ exports.handler = function(event, context, callback) {
       });
     });
   });
-}
+};
 
 /**
  * The function determines which the statement type for the incoming request so that suitable handlers can be invoked subsequently.
@@ -172,10 +172,10 @@ var getStatementType = function(context, statement, callback) {
   var statementType = '';
   if (statement.hasOwnProperty('id') && statement.hasOwnProperty('@context') && statement.hasOwnProperty('eventTime') && statement.hasOwnProperty('actor') && statement.hasOwnProperty('object')) {
     statementType = 'CALIPER';
-    console.log("Incoming statement is of type CALIPER");
+    console.log('Incoming statement is of type CALIPER');
   } else if (statement.hasOwnProperty('id') && statement.hasOwnProperty('actor') && statement.hasOwnProperty('verb') && statement.hasOwnProperty('object') && statement.hasOwnProperty('timestamp')) {
     statementType = 'XAPI';
-    console.log("Incoming statement is of type XAPI");
+    console.log('Incoming statement is of type XAPI');
   } else {
     return callback(new Error('Statement not in xAPI or Caliper format'));
   }
