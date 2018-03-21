@@ -7,7 +7,7 @@ The microservice uses [Serverless](https://serverless.com/framework/docs/) frame
 to build and deploy to AWS.
 
 ## Prerequisites
-  * Node.js v6.10.
+  * Node.js v6.10.3
   * Serverless CLI v1.9.0 or later. You can run  `npm install -g serverless` to install it.
   * An AWS account and Access keys in IAM
   * Set-up your Provider Credentials.
@@ -48,8 +48,8 @@ Note: Install serverless only if using an already deployed function
   * Enter the configurations for
     - Name
     - Description
-    - Runtime - Node.js 6.10
-    - Code entry type as `Upload a zip file`
+    - Runtime - Node.js 6.10.3
+    - Code entry type as `Upload a zip file`.
     - Handler as `index.handler`
     - Role as Existing Role 'cloud-lrs-ingest'
     - Under Advanced settings, set the following

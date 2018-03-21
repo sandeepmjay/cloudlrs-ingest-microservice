@@ -17,8 +17,8 @@
     "aws-sdk": "2.40.0",
     "basic-auth": "1.1.0",
     "body-parser": "1.17.1",
-    "caliperjs": "git@github.com:IMSGlobal/caliper-js.git#master",
-    "cloud-lrs": "git@github.com:ets-berkeley-edu/cloud-lrs.git",
+    "caliperjs": "git://github.com/IMSGlobal/caliper-js-public.git#public",
+    "cloud-lrs": "git://github.com/ets-berkeley-edu/cloud-lrs.git#master",
     "config": "1.25.1",
     "dtrace-provider": "0.8.1",
     "event-stream": "3.3.4",
@@ -38,14 +38,17 @@
     "sequelize": "3.30.4",
     "tincanjs": "0.50.0",
     "uuid": "3.0.1",
-    "xapi-validator": "git@github.com:ets-berkeley-edu/xapi-validator.git",
+    "xapi-validator": "git://github.com/ets-berkeley-edu/xapi-validator.git#master",
     "yargs": "7.0.2"
   },
   "engines": {
-    "node": "6.10.2"
+    "node": "6.10.3"
   },
   "scripts": {
     "localtest": "sls invoke test --NODE_ENV='test'",
     "test": "gulp eslint"
+  },
+  "devDependencies": {
+    "serverless": "^1.26.1"
   }
 }
