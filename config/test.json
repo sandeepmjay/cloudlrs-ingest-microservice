@@ -2,10 +2,10 @@
   "db": {
     "database": "cloudlrstest",
     "username": "cloudlrstest",
-    "password": "cloudlrstest",
+    "password": "",
     "host": "localhost",
     "port": 5432,
-    "dropOnStartup": false,
+    "dropOnStartup": true,
     "version": "9.6.2",
     "sync": true,
     "ssl": false
