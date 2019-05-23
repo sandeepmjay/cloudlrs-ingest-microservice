@@ -132,7 +132,7 @@ createdb cloudlrstest --owner=cloudlrstest
 Run tests using the following command
 ```
 sls invoke test [--stage stage] [--region region] [-f function1] [-f function2] [...]
-sls invoke tests --NODE_ENV='test'
+sls invoke test --NODE_ENV='test'
 ```
 
 The command is also configured in package.json to run via npm.

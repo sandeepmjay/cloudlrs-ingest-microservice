@@ -8,4 +8,3 @@ config/*.json
 .serverless/*
 
 node_modules/*
-package-lock.json
