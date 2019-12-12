@@ -42,7 +42,7 @@
     "yargs": "7.0.2"
   },
   "engines": {
-    "node": "8.10"
+    "node": "10.16.0"
   },
   "scripts": {
     "localtest": "sls invoke test --NODE_ENV='test'",
@@ -52,7 +52,7 @@
     "gulp": "^4.0.2",
     "gulp-eslint": "4.0.0",
     "mocha": "^6.1.4",
-    "serverless": "^1.44.1",
+    "serverless": "^1.59.3",
     "serverless-mocha-plugin": "^1.10.0"
   }
 }
